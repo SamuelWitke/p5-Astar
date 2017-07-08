@@ -25,6 +25,7 @@ var path = [];
 var	start = -1; 
 var	end = -1;
 var pointCount = 2;
+var wallSlider;
 
 function Node(i,j){
 	this.f = 0;
@@ -38,9 +39,9 @@ function Node(i,j){
 	this.diameter;
 	this.x;
 	this.y;
-	this.color = color(210);
+	this.color = color(255);
 
-	if(random(1) < 0.3){// Change to increase more walls
+	if(random(1) < 0.4){// Change to increase more walls
 		this.wall = true;
 		this.color = color(0);
 	}
@@ -151,6 +152,24 @@ function aStar(){
 		var current = openSet[lowest]; // current = openSet.getMin()
 		if(current === end){
 			noLoop(); // The noLoop() function causes draw() to only execute once
+		/*
+		path = [];
+		var temp = current;
+		path.push(temp)
+		while(temp.prev){
+			path.push(temp.prev);
+			temp = temp.prev;
+		}
+		beginShape();
+		noFill();
+		stroke(102,0,255);
+		strokeWeight(w/2);
+		for(var i=0;i<path.length;i++){
+			vertex(path[i].i * w + w/2, path[i].j * h + h/2);
+		}
+		endShape();
+		*/
+
 			console.log("Done");
 		}
 		//Remove From openSet 
@@ -165,17 +184,19 @@ function aStar(){
 
 			if (!closedSet.includes(neighbor) && !neighbor.wall){ // Not in closed set and not wall
 				var tentative_gScore = current.g + heruristic(neighbor,current);// Distance is always 1 in this case 
-				if(!openSet.includes(neighbor)){
+				if(!openSet.includes(neighbor) && tentative_gScore >= current.g){
 					openSet.push(neighbor);
+					//continue;
 				}
+				//openSet.push(neighbor);
 				if(neighbor.g < tentative_gScore){
 					tentative_gScore = neighbor.g;		
 				}
-
 				neighbor.prev = current;
 				neighbor.g = tentative_gScore;
 				neighbor.h = heruristic(neighbor,end);
 				neighbor.f = neighbor.h + neighbor.g;
+				
 			}
 		}
 		return current;
