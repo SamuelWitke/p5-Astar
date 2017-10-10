@@ -3,13 +3,22 @@
 
 <head>
     <meta charset="UTF-8">
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     <script language="javascript" type="text/javascript" src="lib/p5.js"></script>
     <script language="javascript" type="text/javascript" src="lib/p5.dom.js"></script>
     <script language="javascript" type="text/javascript" src="live-A-start.js"></script>
     <style>
 	html, body {
-		  height: 100%;
-		  background: #C0C0C0 !important;
+		height: 100%;
+    	background-color: #222;
+		-webkit-tap-highlight-color: rgba(0,0,0,0);
 	}
 	#sketch-holder{
 		margin: 0;
@@ -19,16 +28,27 @@
 	 	/* This centers our sketch vertically. */
 		align-items: center;
 	}
+	.lead{
+		color: #fff;
+	}		
     </style>
 </head>
 
 <body>
-<center>
-  <h1>A*</h1>
-	<h2> Click Two Points To Begin </h2>
-	<a href="A-star-index.html"> A Star Search </a>
+ <div class="container">
+      <div class="header clearfix">
+        <nav>
+          <ul class="nav nav-pills pull-right">
+            <li role="presentation" class="active"><a href="A-star-index.html"> A Star Search </a> </li>
+            <li role="presentation" class="active"><a href="https://samuelwitke.github.io/website/">Home</a></li>
+          </ul>
+        </nav>
+        <h3 class="text-muted">A* Star</h3>
+      </div>
+		<p class="lead">Click two points to begin</p>
+        <p class="lead">The process of plotting an efficiently directed path between multiple points, called nodes. </p>
     <div id="sketch-holder"></div>
-	<input type="button" value="Start Again?" onClick="window.location.reload()">
-</center>
+	<input type="button" class="btn btn-md btn-primary" value="Start Again?" onClick="window.location.reload()">
+</div>
 </body>
 </html>
